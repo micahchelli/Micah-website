@@ -292,8 +292,15 @@
   .sec-head h2{font-size:clamp(40px,6vw,82px);color:var(--emerald-deep);margin-top:16px;letter-spacing:-.01em}
   .sec-head h2 em{color:var(--rose-deep)}
 
-  .reveal{opacity:0;transform:translateY(50px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,1,.36,1)}
+  .reveal{opacity:0;transform:translateY(60px);transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1)}
   .reveal.in{opacity:1;transform:translateY(0)}
+  .reveal-l{opacity:0;transform:translateX(-70px);transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1)}
+  .reveal-l.in{opacity:1;transform:translateX(0)}
+  .reveal-r{opacity:0;transform:translateX(70px);transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1)}
+  .reveal-r.in{opacity:1;transform:translateX(0)}
+  .reveal-scale{opacity:0;transform:scale(.88) translateY(40px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+  .reveal-scale.in{opacity:1;transform:scale(1) translateY(0)}
+  .d1{transition-delay:.1s!important}.d2{transition-delay:.2s!important}.d3{transition-delay:.3s!important}.d4{transition-delay:.4s!important}
 
   /* ===== SERVICES ===== */
   .services-strip{background:var(--cream);padding:80px clamp(20px,5vw,70px)}
@@ -346,7 +353,7 @@
   .story-visual{position:relative;height:480px}
   .story-blob{position:absolute;inset:0;border-radius:46% 54% 60% 40%/52% 44% 56% 48%;background:linear-gradient(140deg,var(--moss),var(--emerald-deep));overflow:hidden;animation:morph 12s ease-in-out infinite}
   .story-blob::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(233,166,184,.18),transparent 55%)}
-  .luni-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}
+  .luni-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% center}
   @keyframes morph{0%,100%{border-radius:46% 54% 60% 40%/52% 44% 56% 48%}50%{border-radius:58% 42% 42% 58%/45% 58% 42% 55%}}
   .story-quote{position:absolute;bottom:-26px;left:-26px;background:var(--cream);padding:26px 30px;border-radius:18px;box-shadow:0 20px 50px var(--shadow);max-width:260px}
   .story-quote .mark{font-family:'Cormorant Garamond';font-size:60px;color:var(--gold);line-height:.3;display:block;height:30px}
@@ -570,22 +577,22 @@
   <div class="services-inner">
     <h2 class="services-title">Tailoring &amp; Design Services in Bangalore</h2>
     <div class="services-grid">
-      <div class="svc-card">
+      <div class="svc-card reveal-scale d1">
         <span class="svc-icon">✂</span>
         <h3>Indo-Western Tailoring</h3>
         <p>Custom Indo-Western outfits tailored to your exact measurements — the perfect blend of Indian tradition and modern silhouettes.</p>
       </div>
-      <div class="svc-card">
+      <div class="svc-card reveal-scale d2">
         <span class="svc-icon">👗</span>
         <h3>Custom Gowns</h3>
         <p>Bespoke evening gowns and occasion wear designed and hand-stitched for your shape, your story and your moment.</p>
       </div>
-      <div class="svc-card">
+      <div class="svc-card reveal-scale d3">
         <span class="svc-icon">💍</span>
         <h3>Bridal Couture</h3>
         <p>Hand-tailored bridal outfits and wedding dresses made with care. Luni works closely with every bride to bring her vision to life.</p>
       </div>
-      <div class="svc-card">
+      <div class="svc-card reveal-scale d4">
         <span class="svc-icon">🪡</span>
         <h3>Alterations</h3>
         <p>Expert clothing alterations and adjustments with neat finishes — quick turnaround, honest prices, based in Bangalore.</p>
@@ -606,21 +613,21 @@
 <!-- ATELIER -->
 <section id="atelier">
   <div class="story-grid">
-    <div class="story-visual reveal">
+    <div class="story-visual reveal-l">
       <div class="story-blob"><img src="/0358f21a-6324-43e0-b76e-65061d48c5de.jpeg" alt="Luni — designer at Luni Fashion Bangalore" class="luni-photo"></div>
       <div class="story-quote">
         <span class="mark">"</span>
         <p>A fun, lively and kind soul — your clothes, designed by hand.</p>
       </div>
     </div>
-    <div class="story-text reveal">
+    <div class="story-text reveal-r">
       <span class="sec-label">The Atelier</span>
       <h2>One designer. <em>Endless</em> devotion to detail.</h2>
       <p>Luni Fashion is Bangalore's independent bespoke design consultancy, built on a simple belief: clothing should be made <em>for you</em> — your shape, your story, your occasion. From wedding outfits to everyday Indo-Western designs, every stitch is placed with patience and care.</p>
       <p>Clients return year after year for the neat finishes, the honest prices, and the warmth that turns a fitting into a friendship.</p>
       <div class="story-stats">
-        <div class="stat"><div class="n">6+</div><div class="lbl">Years crafting</div></div>
-        <div class="stat"><div class="n">4.8★</div><div class="lbl">Avg. rating</div></div>
+        <div class="stat"><div class="n" data-count="6" data-suffix="+">6+</div><div class="lbl">Years crafting</div></div>
+        <div class="stat"><div class="n" data-count="4.8" data-suffix="★" data-decimal="1">4.8★</div><div class="lbl">Avg. rating</div></div>
         <div class="stat"><div class="n">∞</div><div class="lbl">Custom designs</div></div>
       </div>
     </div>
@@ -803,17 +810,19 @@ function showToast(msg){
   toastTimer = setTimeout(()=>t.classList.remove('show'),2400);
 }
 
-/* ============ SCROLL REVEAL ============ */
+/* ============ SCROLL ANIMATIONS ============ */
+/* General reveal observer */
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-},{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-scale').forEach(el=>io.observe(el));
 
+/* Staggered review cards */
 const revIO = new IntersectionObserver((entries)=>{
-  entries.forEach((e,idx)=>{
+  entries.forEach(e=>{
     if(e.isIntersecting){
-      const cards = [...document.querySelectorAll('.rev-card')];
-      const i = cards.indexOf(e.target);
+      const cards=[...document.querySelectorAll('.rev-card')];
+      const i=cards.indexOf(e.target);
       setTimeout(()=>e.target.classList.add('in'),(i%6)*90);
       revIO.unobserve(e.target);
     }
@@ -821,8 +830,43 @@ const revIO = new IntersectionObserver((entries)=>{
 },{threshold:0.08});
 document.querySelectorAll('.rev-card').forEach(el=>revIO.observe(el));
 
-/* nav shrink */
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('shrunk',window.scrollY>40)});
+/* Counter animation */
+function animateCounter(el){
+  const end=parseFloat(el.dataset.count);
+  const suffix=el.dataset.suffix||'';
+  const decimal=parseInt(el.dataset.decimal||'0');
+  const dur=1600;
+  let start=null;
+  const step=ts=>{
+    if(!start)start=ts;
+    const p=Math.min((ts-start)/dur,1);
+    const ease=1-Math.pow(1-p,4);
+    const val=ease*end;
+    el.textContent=(decimal?val.toFixed(decimal):Math.round(val))+suffix;
+    if(p<1)requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const counterIO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting&&e.target.dataset.count){
+      animateCounter(e.target);
+      counterIO.unobserve(e.target);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-count]').forEach(el=>counterIO.observe(el));
+
+/* Parallax on hero */
+const heroVisual=document.querySelector('.hero-visual');
+const heroCopy=document.querySelector('.hero-copy');
+const marqTrack=document.querySelector('.marquee-track');
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  document.getElementById('nav').classList.toggle('shrunk',sy>40);
+  if(heroVisual)heroVisual.style.transform=`translateY(${sy*0.14}px)`;
+  if(heroCopy)heroCopy.style.transform=`translateY(${sy*0.07}px)`;
+},{passive:true});
 
 document.getElementById('navLogo').src=LOGO_ICON;
 document.getElementById('footLogo').src=LOGO_FULL;
